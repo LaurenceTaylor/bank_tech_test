@@ -1,9 +1,11 @@
 require 'account'
 
 describe Account do
+  let(:time_now) { Time.now }
+
   let(:entry_double) do
-    double(:entry, time: Time.now, credit: 0, debit: 0,
-                   new_balance: 500)
+    double(:entry, time: time_now, credit: 0, debit: 0,
+                   balance: 0, format: 'time || 0 || 0 || 0')
   end
 
   let(:entry_class_double) { double(:entry_class, new: entry_double) }
@@ -21,6 +23,15 @@ describe Account do
       subject.withdraw(0, entry_class_double)
 
       expect(subject.entries[0]).to eq(entry_double)
+    end
+  end
+
+  describe '#log' do
+    it 'should format the entries array' do
+      subject.deposit(0, entry_class_double)
+
+      string = "date || credit || debit || balance\ntime || 0 || 0 || 0\n"
+      expect(subject.log).to eq(string)
     end
   end
 end
