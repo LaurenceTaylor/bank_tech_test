@@ -29,9 +29,9 @@ describe Account do
   describe '#log' do
     it 'should format the entries array' do
       subject.deposit(0, entry_class_double)
+      str = "\"date || credit || debit || balance\"\n\"time || 0 || 0 || 0\"\n"
 
-      string = "date || credit || debit || balance\ntime || 0 || 0 || 0\n"
-      expect(subject.log).to eq(string)
+      expect { subject.log }.to output(str).to_stdout
     end
   end
 end

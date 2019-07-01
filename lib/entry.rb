@@ -16,7 +16,7 @@ class Entry
   private
 
   def new_balance(balance)
-    return balance + @credit if !@credit.nil?
-    return balance - @debit if !@debit.nil?
+    return balance + @credit unless @credit.nil?
+    return balance - @debit unless @debit.nil?
   end
 end

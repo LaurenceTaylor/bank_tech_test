@@ -13,27 +13,25 @@ class Account
 
   def deposit(credit, entry_class = Entry)
     entry = entry_class.new(credit: credit, balance: @current_balance)
-    @entries << entry
-    update_balance(entry.balance)
+    update_account(entry, entry.balance)
   end
 
   def withdraw(debit, entry_class = Entry)
     entry = entry_class.new(debit: debit, balance: @current_balance)
-    @entries << entry
-    update_balance(entry.balance)
+    update_account(entry, entry.balance)
   end
 
   def log
-    result = "date || credit || debit || balance\n"
+    p 'date || credit || debit || balance'
     @entries.each do |entry|
-      result += "#{entry.format}\n"
+      p entry.format
     end
-    return result
   end
 
   private
 
-  def update_balance(new_balance)
+  def update_account(entry, new_balance)
+    @entries << entry
     @current_balance = new_balance
   end
 end
