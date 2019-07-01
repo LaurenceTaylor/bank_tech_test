@@ -1,4 +1,4 @@
-# Stores date, credit/ debit amounts, and calculates new balance
+# Stores date, credit/ debit amounts, and balance
 class Entry
   attr_reader :balance
 
