@@ -9,8 +9,9 @@ class Entry
     @balance = new_balance(balance)
   end
 
-  def format
-    "#{@time} || #{@credit} || #{@debit} || #{@balance}"
+  def to_string
+    "#{@time.strftime('%m/%d/%Y')} || #{round(@credit)} || #{round(@debit)}" \
+    " || #{round(@balance)}"
   end
 
   private
@@ -18,5 +19,9 @@ class Entry
   def new_balance(balance)
     return balance + @credit unless @credit.nil?
     return balance - @debit unless @debit.nil?
+  end
+
+  def round(number)
+    format('%.2f', number) unless number.nil?
   end
 end

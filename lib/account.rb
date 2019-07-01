@@ -1,10 +1,7 @@
 require_relative './entry'
-
 # Stores entries, shows them, and allows deposits/ withdrawals
 class Account
   INITIAL_BALANCE = 0
-
-  attr_reader :entries, :current_balance
 
   def initialize
     @entries = []
@@ -23,9 +20,7 @@ class Account
 
   def log
     p 'date || credit || debit || balance'
-    @entries.each do |entry|
-      p entry.format
-    end
+    @entries.each { |entry| p entry.to_string }
   end
 
   private

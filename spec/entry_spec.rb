@@ -7,7 +7,8 @@ describe Entry do
       allow(Time).to receive(:now) { time_now }
 
       entry = Entry.new(debit: 500, balance: 1000)
-      expect(entry.format).to eq("#{time_now} ||  || 500 || 500")
+      time = time_now.strftime('%m/%d/%Y')
+      expect(entry.to_string).to eq("#{time} ||  || 500.00 || 500.00")
     end
   end
 end
