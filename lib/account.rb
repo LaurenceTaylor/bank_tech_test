@@ -20,7 +20,7 @@ class Account
 
   def log
     p 'date || credit || debit || balance'
-    @entries.each { |entry| p entry.to_string }
+    @entries.reverse.each { |entry| p entry.to_string }
   end
 
   private
