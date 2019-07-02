@@ -2,6 +2,7 @@ require_relative './entry'
 # Stores entries, shows them, and allows deposits/ withdrawals
 class Account
   INITIAL_BALANCE = 0
+  LOG_HEADER = 'date || credit || debit || balance'
 
   def initialize
     @entries = []
@@ -19,7 +20,7 @@ class Account
   end
 
   def log
-    p 'date || credit || debit || balance'
+    p LOG_HEADER
     @entries.reverse.each { |entry| p entry.to_string }
   end
 
