@@ -17,6 +17,36 @@ date || credit || debit || balance
 10/01/2012 || 1000.00 || || 1000.00
 ```
 
+## How to use
+
+* Clone this app to a local repository
+
+* Run bundle install in the command line to install dependencies
+
+* To run the program, enter irb and require lib/account.rb, e.g.
+
+```
+irb -r ./lib/account.rb
+```
+
+* Make new accounts with Account.new, deposit with .deposit, withdraw with .withdraw,
+and get a log of your transactions with .log.
+
+* To run tests enter rspec into the command line.
+
+### Example
+
+```
+$ irb -r ./lib/account.rb
+> account = Account.new
+> account.deposit(500.50)
+> account.withdraw(75.29)
+> account.log 
+"date || credit || debit || balance"
+"07/02/2019 ||  || 75.29 || 425.21"
+"07/02/2019 || 500.50 ||  || 500.50"
+```
+
 ## Approach
 
 * First, I broke the spec down into the following user stories:
